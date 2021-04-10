@@ -21,7 +21,8 @@ app.get('/', (req, res) => {
 })
 
 
-const uri = "mongodb+srv://shopValley:shahadat1234@cluster0.itqew.mongodb.net/shop-valley?retryWrites=true&w=majority";
+// const uri = "mongodb+srv://shopValley:shahadat1234@cluster0.itqew.mongodb.net/shop-valley?retryWrites=true&w=majority";
+const uri =`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.itqew.mongodb.net/${process.env.DB_Name}?retryWrites=true&w=majority`;
 console.log(uri);
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -59,8 +60,8 @@ app.delete('deleteProduct/:id',(req,res) => {
 })
 
 
-app.listen(5055, console.log('listening on 5055'));
+// app.listen(5055, console.log('listening on 5055'));
 
-// app.listen(port, () => {
-//   console.log(`Example app listening at http://localhost:${port}`)
-// })
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
